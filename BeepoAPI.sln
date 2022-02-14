@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.810.17
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeepoAPI", "BeepoAPI\BeepoAPI.csproj", "{13602EC6-9B57-4DB2-AE1A-E05466D0810E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{13602EC6-9B57-4DB2-AE1A-E05466D0810E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13602EC6-9B57-4DB2-AE1A-E05466D0810E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13602EC6-9B57-4DB2-AE1A-E05466D0810E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13602EC6-9B57-4DB2-AE1A-E05466D0810E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A9108ECC-9C31-42DF-B4F4-76DBA2436452}
+	EndGlobalSection
+EndGlobal
