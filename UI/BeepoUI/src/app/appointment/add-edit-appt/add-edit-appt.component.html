@@ -1,0 +1,46 @@
+<div class="form-group">
+    <div class="row">
+        <label class="col-sm-6">Check-up Type</label>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" [(ngModel)]="Checkuptype" value="General" checked>
+            <label class="form-check-label" for="exampleRadios1">
+              General
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" [(ngModel)]="Checkuptype" value="Skin cancer">
+            <label class="form-check-label" for="exampleRadios2">
+              Skin Cancer
+            </label>
+          </div>
+    </div>
+    <div class="row">
+        <label>Appointment Date</label>
+        <input type="text" class="form-control" disabled [(ngModel)]="AppointmentDate" value={{AppointmentDate}}>
+    </div>
+    <div class="row">
+        <label>Status</label>
+        <input type="text" class="form-control" disabled [(ngModel)]="Appstatus" value="{{Appstatus}}">
+    </div>
+    <div class="row">
+        <label>Doctor</label>
+        <select class="form-control" [(ngModel)]="EmployeeId" (change)="selectOption()"> 
+            <option selected></option>
+            <option *ngFor="let doctor of doctors" value="{{doctor.Id}}">
+                {{doctor.Firstname}} {{doctor.Lastname}}
+            </option>
+        </select>
+    </div>
+    <div class="row" *ngIf="appointment.Id!=0">
+        <label>Comment</label>
+        <input type="text" class="form-control" [(ngModel)]="Comment" value="Comment">
+    </div>
+</div>
+
+<button (click)="addAppointment()" *ngIf="appointment.Id==0" class="btn btn-primary m-1">
+    Add
+</button>
+
+<button (click)="editAppointment()" *ngIf="appointment.Id!=0" class="btn btn-primary m-1">
+    Update
+</button>

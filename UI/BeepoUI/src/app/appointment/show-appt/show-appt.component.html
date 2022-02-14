@@ -1,0 +1,63 @@
+<div class="row">
+    <label>Date</label>
+    <input type="date" placeholder="mm/dd/yyyy" ngModel="DateToDisplay" class="form-control">
+    <button class="btn btn-light">View</button>
+</div>
+<div class="row">
+    <table class="table table-condensed">
+        <thead>
+            <tr>
+                <td>Time Slot</td>
+                <td>Check-up type</td>
+                <td>Patient</td>
+                <td>Doctor</td>
+                <td>Status</td>
+                <td>Actions</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr #ref *ngFor="let slot of timeSlots; let i = index;" >
+                <td>{{slot}} </td>
+                <ng-container  *ngFor="let item of AppointmentList; let j = index;">
+                   
+                    <td *ngIf="(item.AppointmentDate|date:'MM/dd/yyyy HH:mm:ss') == (DateToDisplay+' '+slot)">{{item.Checkuptype}}</td>
+                    <td *ngIf="(item.AppointmentDate|date:'MM/dd/yyyy HH:mm:ss') == (DateToDisplay+' '+slot)">{{item.Patient.Firstname + ' ' + item.Patient.Lastname }}</td>
+                    <td *ngIf="(item.AppointmentDate|date:'MM/dd/yyyy HH:mm:ss') == (DateToDisplay+' '+slot)">{{item.Employee.Firstname + ' ' + item.Employee.Lastname}}</td>
+                    <td *ngIf="(item.AppointmentDate|date:'MM/dd/yyyy HH:mm:ss') == (DateToDisplay+' '+slot)">{{item.Appstatus}}</td>
+                    <td *ngIf="(item.AppointmentDate|date:'MM/dd/yyyy HH:mm:ss') == (DateToDisplay+' '+slot)">
+                        <button type="button" class="btn btn-secondary m-1" data-bs-toggle="modal" data-bs-target="#apptModal" (click)="editAppointment(Appointment)" data-bs-backdrop="static" data-bs-keyboard="false">
+                            Edit 
+                        </button>
+                        <button type="button" class="btn btn-danger m-1" (click)="deleteAppointment(item.Id)">
+                            Delete
+                        </button>
+                    </td>
+                    
+                    <td *ngIf="(j == AppointmentLength-1) && ref.children.length < 10"></td>
+                    <td *ngIf="(j == AppointmentLength-1) && ref.children.length < 7"></td>
+                    <td *ngIf="(j == AppointmentLength-1) && ref.children.length < 7"></td>
+                    <td *ngIf="(j == AppointmentLength-1) && ref.children.length < 7"></td>
+                    <td *ngIf="(j == AppointmentLength-1) && ref.children.length < 7">
+                        <button type="button" class="btn btn-primary m-1" data-bs-toggle="modal" data-bs-target="#apptModal" (click)="addAppointment(slot)" data-bs-backdrop="static" data-bs-keyboard="false">
+                            Add
+                        </button>
+                    </td>
+                </ng-container>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="modal fade" tabindex="-1" id="apptModal" data-bs-backdrop="static" data-bs-keyboard="false" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{{ModalTitle}}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeClick()"></button>
+            </div>
+            <div class="modal-body">
+                <app-add-edit-appt [appointment]="Appointment" *ngIf="ActiveAddEditAppt"></app-add-edit-appt>
+            </div>
+        </div>
+    </div>
+</div>
